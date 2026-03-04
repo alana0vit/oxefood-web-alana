@@ -1,5 +1,6 @@
 import InputMask from 'comigo-tech-react-input-mask';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, FormField, Icon, TextArea } from 'semantic-ui-react';
 import axios from 'axios';
 
@@ -126,17 +127,20 @@ export default function FormProduto() {
 
                         <div style={{ marginTop: '4%' }}>
 
-                            <Button
-                                type="button"
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='orange'
-                            >
-                                <Icon name='reply' />
-                                Voltar
-                            </Button>
+                            <Link to={'/list-produto'}>
+                                <Button
+                                    type="button"
+                                    inverted
+                                    circular
+                                    icon
+                                    labelPosition='left'
+                                    color='orange'
+                                >
+                                    <Icon name='reply' />
+                                    Voltar
+                                </Button>
+                            </Link>
+
 
                             <Button
                                 inverted

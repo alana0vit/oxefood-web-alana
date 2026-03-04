@@ -2,6 +2,7 @@ import InputMask from 'comigo-tech-react-input-mask';
 import { useState } from 'react';
 import { Button, Container, Divider, Form, Icon, Radio } from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const options = [
     { key: 'AC', text: 'Acre', value: 'AC' },
@@ -245,7 +246,7 @@ export default function FormEntregador() {
                                     <InputMask
                                         mask="99999-999"
                                         value={enderecoCep}
-                                    onChange={e => setEnderecoCep(e.target.value)}
+                                        onChange={e => setEnderecoCep(e.target.value)}
                                     />
                                 </Form.Input>
 
@@ -258,7 +259,7 @@ export default function FormEntregador() {
                                 fluid
                                 selection
                                 value={enderecoUf}
-                                    onChange={e => setEnderecoUf(e.target.value)}
+                                onChange={e => setEnderecoUf(e.target.value)}
                             />
 
                             <Form.Input
@@ -266,7 +267,7 @@ export default function FormEntregador() {
                                 label='Complemento'
                                 maxLength="150"
                                 value={enderecoComplemento}
-                                    onChange={e => setEnderecoComplemento(e.target.value)}
+                                onChange={e => setEnderecoComplemento(e.target.value)}
                             >
                             </Form.Input>
 
@@ -300,17 +301,20 @@ export default function FormEntregador() {
 
                         <div style={{ marginTop: '4%' }}>
 
-                            <Button
-                                type="button"
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='orange'
-                            >
-                                <Icon name='reply' />
-                                Voltar
-                            </Button>
+                            <Link to={'/list-entregador'}>
+                                <Button
+                                    type="button"
+                                    inverted
+                                    circular
+                                    icon
+                                    labelPosition='left'
+                                    color='orange'
+                                >
+                                    <Icon name='reply' />
+                                    Voltar
+                                </Button>
+                            </Link>
+
 
                             <Button
                                 inverted

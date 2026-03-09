@@ -55,23 +55,21 @@ export default function ListEntregador() {
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell>Nome</Table.HeaderCell>
-                                    <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
+                                    <Table.HeaderCell>DataNasc</Table.HeaderCell>
                                     <Table.HeaderCell>CPF</Table.HeaderCell>
-                                    <Table.HeaderCell>Fone Celular</Table.HeaderCell>
-                                    <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                                    <Table.HeaderCell>F. Celular</Table.HeaderCell>
+                                    <Table.HeaderCell>F. Fixo</Table.HeaderCell>
                                     <Table.HeaderCell>RG</Table.HeaderCell>
-                                    <Table.HeaderCell>Qtdd Entr. Realizadas</Table.HeaderCell>
-                                    <Table.HeaderCell>Valor Frete</Table.HeaderCell>
+                                    <Table.HeaderCell>QtddEntrReal</Table.HeaderCell>
+                                    <Table.HeaderCell>Frete</Table.HeaderCell>
                                     <Table.HeaderCell>Rua</Table.HeaderCell>
-                                    <Table.HeaderCell>Complemento</Table.HeaderCell>
-                                    <Table.HeaderCell>Número</Table.HeaderCell>
-                                    <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                                    <Table.HeaderCell>Compl.</Table.HeaderCell>
+                                    <Table.HeaderCell>Nº</Table.HeaderCell>
                                     <Table.HeaderCell>Bairro</Table.HeaderCell>
                                     <Table.HeaderCell>Cidade</Table.HeaderCell>
                                     <Table.HeaderCell>UF</Table.HeaderCell>
                                     <Table.HeaderCell>CEP</Table.HeaderCell>
                                     <Table.HeaderCell>Ativo</Table.HeaderCell>
-                                    <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
 
                                     <Table.HeaderCell textAlign='center'>Ações</Table.HeaderCell>
                                 </Table.Row>

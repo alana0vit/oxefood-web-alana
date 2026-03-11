@@ -152,8 +152,6 @@ export default function ListCliente() {
                     </Button>
                 </Modal.Actions>
             </Modal>
-
-
         </div>
     )
 }

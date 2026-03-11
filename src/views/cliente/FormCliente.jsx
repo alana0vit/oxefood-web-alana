@@ -1,5 +1,5 @@
 import InputMask from 'comigo-tech-react-input-mask';
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
@@ -8,7 +8,6 @@ export default function FormCliente() {
 
     const { state } = useLocation();
     const [idCliente, setIdCliente] = useState();
-
 
     const [nome, setNome] = useState();
     const [cpf, setCpf] = useState();
@@ -77,7 +76,6 @@ export default function FormCliente() {
                     {idCliente != undefined &&
                         <h2> <span style={{ color: 'darkgray' }}> Cliente &nbsp;<Icon name='angle double right' size="small" /> </span> Alteração</h2>
                     }
-
 
                     <Divider />
 

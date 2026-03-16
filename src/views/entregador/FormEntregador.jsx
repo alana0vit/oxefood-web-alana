@@ -52,7 +52,7 @@ export default function FormEntregador() {
     const [enderecoNumero, setEnderecoNumero] = useState();
     const [enderecoBairro, setEnderecoBairro] = useState();
     const [enderecoCidade, setEnderecoCidade] = useState();
-    const [enderecoUf, setEnderecoUf] = useState();
+    const [enderecoUf, setEnderecoUf] = useState('');
     const [enderecoCep, setEnderecoCep] = useState();
     const [ativo, setAtivo] = useState(true);
 
@@ -303,7 +303,7 @@ export default function FormEntregador() {
                                 fluid
                                 selection
                                 value={enderecoUf}
-                                onChange={e => setEnderecoUf(e.target.value)}
+                                onChange={(e, { value }) => setEnderecoUf(value)}
                             />
 
                             <Form.Input

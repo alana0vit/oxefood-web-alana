@@ -7,8 +7,13 @@ import MenuSistema from '../../MenuSistema';
 export default function ListEntregador() {
 
     const [lista, setLista] = useState([]);
+
     const [openModal, setOpenModal] = useState(false);
     const [idRemover, setIdRemover] = useState();
+
+    const [openModalTable, setOpenModalTable] = useState(false);
+
+    const [entregadorSelecionado, setEntregadorSelecionado] = useState(null);
 
     useEffect(() => {
         carregarLista();
@@ -35,6 +40,11 @@ export default function ListEntregador() {
     function confirmaRemover(id) {
         setOpenModal(true)
         setIdRemover(id)
+    }
+
+    function visualizarDados(entregador) {
+        setEntregadorSelecionado(entregador)
+        setOpenModalTable(true)
     }
 
     async function remover() {
@@ -86,18 +96,6 @@ export default function ListEntregador() {
                                     <Table.HeaderCell>CPF</Table.HeaderCell>
                                     <Table.HeaderCell>F. Celular</Table.HeaderCell>
                                     <Table.HeaderCell>F. Fixo</Table.HeaderCell>
-                                    <Table.HeaderCell>RG</Table.HeaderCell>
-                                    <Table.HeaderCell>QtddEntrReal</Table.HeaderCell>
-                                    <Table.HeaderCell>Frete</Table.HeaderCell>
-                                    <Table.HeaderCell>Rua</Table.HeaderCell>
-                                    <Table.HeaderCell>Compl.</Table.HeaderCell>
-                                    <Table.HeaderCell>Nº</Table.HeaderCell>
-                                    <Table.HeaderCell>Bairro</Table.HeaderCell>
-                                    <Table.HeaderCell>Cidade</Table.HeaderCell>
-                                    <Table.HeaderCell>UF</Table.HeaderCell>
-                                    <Table.HeaderCell>CEP</Table.HeaderCell>
-                                    <Table.HeaderCell>Ativo</Table.HeaderCell>
-
                                     <Table.HeaderCell textAlign='center'>Ações</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
@@ -112,18 +110,16 @@ export default function ListEntregador() {
                                         <Table.Cell>{entregador.cpf}</Table.Cell>
                                         <Table.Cell>{entregador.foneCelular}</Table.Cell>
                                         <Table.Cell>{entregador.foneFixo}</Table.Cell>
-                                        <Table.Cell>{entregador.rg}</Table.Cell>
-                                        <Table.Cell>{entregador.qtdEntregaRealizadas}</Table.Cell>
-                                        <Table.Cell>{entregador.valorFrete}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoRua}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoComplemento}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoNumero}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoBairro}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoCidade}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoUf}</Table.Cell>
-                                        <Table.Cell>{entregador.enderecoCep}</Table.Cell>
-                                        <Table.Cell>{entregador.ativo}</Table.Cell>
                                         <Table.Cell textAlign='center'>
+                                            <Button
+                                                inverted
+                                                circular
+                                                color='blue'
+                                                title='Visualizar detalhes'
+                                                icon
+                                                onClick={() => visualizarDados(entregador)}>
+                                                <Icon name='eye' />
+                                            </Button> &nbsp;
 
                                             <Button
                                                 inverted
@@ -173,6 +169,96 @@ export default function ListEntregador() {
                         <Icon name='checkmark' /> Sim
                     </Button>
                 </Modal.Actions>
+            </Modal>
+
+            <Modal
+                basic
+                onClose={() => setOpenModalTable(false)}
+                onOpen={() => setOpenModalTable(true)}
+                open={openModalTable}>
+
+                <Header icon>
+                    <Icon name='eye' />
+                    Detalhes do Entregador
+                </Header>
+
+                <Modal.Content>
+
+                    {entregadorSelecionado && (
+
+                        <Table celled>
+
+                            <Table.Body>
+
+                                <Table.Row>
+                                    <Table.Cell><b>RG</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.rg}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Quantidade de Entregas</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.qtdEntregaRealizadas}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Valor do Frete</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.valorFrete}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Rua</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoRua}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Complemento</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoComplemento}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Número</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoNumero}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Bairro</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoBairro}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Cidade</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoCidade}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>UF</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoUf}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>CEP</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.enderecoCep}</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell><b>Ativo</b></Table.Cell>
+                                    <Table.Cell>{entregadorSelecionado.ativo}</Table.Cell>
+                                </Table.Row>
+
+                            </Table.Body>
+
+                        </Table>
+
+                    )}
+
+                </Modal.Content>
+
+                <Modal.Actions>
+                    <Button color='green' inverted onClick={() => setOpenModalTable(false)}>
+                        <Icon name='checkmark' /> Fechar
+                    </Button>
+                </Modal.Actions>
+
             </Modal>
 
         </div>

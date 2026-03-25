@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, FormField, Icon, TextArea } from 'semantic-ui-react';
 import axios from 'axios';
+import { notifyError, notifySuccess } from '../../views/util/Util';
 
 export default function FormProduto() {
 
@@ -28,12 +29,29 @@ export default function FormProduto() {
         }
         if (idProduto != null) { //Alteração:
             axios.put("http://localhost:8080/api/produto/" + idProduto, produtoRequest)
-                .then((response) => { console.log('Produto alterado com sucesso.') })
-                .catch((error) => { console.log('Erro ao alter um produto.') })
+                .then((response) => { notifySuccess('Produto cadastrado com sucesso.') })
+                .catch((error) => {
+                    if (error.response.data.errors != undefined) {
+                        for (let i = 0; i < error.response.data.errors.length; i++) {
+                            notifyError(error.response.data.errors[i].defaultMessage)
+                        }
+                    } else {
+                        notifyError(error.response.data.message)
+                    }
+                })
         } else { //Cadastro:
             axios.post("http://localhost:8080/api/produto", produtoRequest)
-                .then((response) => { console.log('Produto cadastrado com sucesso.') })
-                .catch((error) => { console.log('Erro ao incluir o produto.') })
+                .then((response) => { notifySuccess('Produto cadastrado com sucesso.') })
+                .catch((error) => {
+                    if (error.response.data.errors != undefined) {
+                        for (let i = 0; i < error.response.data.errors.length; i++) {
+                            notifyError(error.response.data.errors[i].defaultMessage)
+                        }
+                    } else {
+                        notifyError(error.response.data.message)
+                    }
+
+                })
         }
     }
 
